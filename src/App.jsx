@@ -1,12 +1,9 @@
-import { useState } from "react";
-import "./style/App.css";
-
 function App() {
-  return (
-    <>
-      <p className="text-3xl font-bold">Ciao Federico!</p>
-    </>
-  );
+    return (
+        <>
+            <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
+        </>
+    );
 }
 
 export default App;
