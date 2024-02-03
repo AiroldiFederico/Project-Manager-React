@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Josefin Sans", "sans-serif"],
+        josefine: ["Josefin Sans", "sans-serif"],
         roboto: ["Roboto Slab", "sans-serif"],
       },
     },
