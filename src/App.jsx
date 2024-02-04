@@ -1,4 +1,5 @@
 import Sidebar from "./components/Sidebar.jsx";
+import CreateProject from "./components/CreateProject.jsx";
 
 function App() {
 
@@ -14,9 +15,12 @@ function App() {
 
 
     return (
-        <>
+        <main className="flex">
             <Sidebar proj={proj}/>
-        </>
+
+            <CreateProject/>
+
+        </main>
     );
 }
 
