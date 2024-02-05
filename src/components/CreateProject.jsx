@@ -1,27 +1,61 @@
+import { useState, useRef } from "react";
+
+export default function CreateProject({ onProjectCreate }) {
+
+	const titleRef = useRef(null);
+	const descriptionRef = useRef(null);
+	const dateRef = useRef(null);
+
+	function handleSave() {
+
+		// Crea un nuovo oggetto progetto basato sui valori degli input
+		const newProject = {
+			title: titleRef.current.value,
+			description: descriptionRef.current.value,
+			date: dateRef.current.value,
+		};
+
+		// Chiama una funzione callback passata come prop per aggiungere il nuovo progetto
+		onProjectCreate(newProject);
+
+		// Opzionalmente, resetta i campi di input dopo il salvataggio
+		titleRef.current.value = '';
+		descriptionRef.current.value = '';
+		dateRef.current.value = '';
+	}
 
 
 
-export default function CreateProject() {
 	return <section className="h-full ml-80 p-12 w-[60rem] mt-14 flex flex-col gap-8">
 
 		<div className="flex justify-end">
 			<button className="text-stone-800 hover:text-stone-950 font-bold px-6 py-2">Cancel</button>
-			<button className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950 font-bold">Save</button>
+			<button
+				onClick={handleSave}
+				className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950 font-bold">Save</button>
 		</div>
 
 		<div className="flex flex-col">
 			<label className="text-sm font-bold uppercase text-stone-500">TITLE</label>
-			<input type="text" className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"/>
+			<input
+				ref={titleRef}
+				type="text"
+				className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"/>
 		</div>
 
 		<div className="flex flex-col">
 			<label className="text-sm font-bold uppercase text-stone-500">DESCRIPTION</label>
-			<textarea className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"/>
+			<textarea
+				ref={descriptionRef}
+				className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"/>
 		</div>
 
 		<div className="flex flex-col">
 			<label className="text-sm font-bold uppercase text-stone-500">DUE DATE</label>
-			<input type="date" className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"/>
+			<input
+				ref={dateRef}
+				type="date"
+				className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600"/>
 		</div>
 
 	</section>

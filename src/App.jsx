@@ -1,22 +1,17 @@
+// Components
 import Sidebar from "./components/Sidebar.jsx";
 import CreateProject from "./components/CreateProject.jsx";
 
+//hooks
+import {useRef, } from "react";
+
 function App() {
 
-
-    const proj = [
-        {
-            name: "Learning React"
-        },
-        {
-            name: "Studying React"
-        }
-    ]
-
+    const proj = []
 
     return (
         <main className="flex">
-            <Sidebar proj={proj}/>
+            <Sidebar proj={proj} />
 
             <CreateProject/>
 
