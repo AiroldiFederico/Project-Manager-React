@@ -15,7 +15,7 @@ export default function Sidebar({proj, setView}) {
 
 		<div className="flex flex-col gap-1">
 			{proj.map((row, rowIndex) => (
-				<button key={rowIndex} className=" text-left px-2 rounded-sm hover:text-stone-200 hover:bg-stone-800">{row.name}</button>
+				<button key={rowIndex} className=" text-left px-2 rounded-sm hover:text-stone-200 hover:bg-stone-800">{row.title}</button>
 			))}
 		</div>
 

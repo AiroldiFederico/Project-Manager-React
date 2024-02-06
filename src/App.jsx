@@ -3,17 +3,24 @@ import Sidebar from "./components/Sidebar.jsx";
 import CreateProject from "./components/CreateProject.jsx";
 
 //hooks
-import {useRef, } from "react";
+import {useRef, useState,} from "react";
 
 function App() {
 
-    const proj = []
+    const [project, setProject] = useState([]);
+
+    function  handleProject(newProject) {
+        setProject(prevProject => [...prevProject, newProject])
+        console.log(newProject);
+    }
+
+    console.log(project);
 
     return (
         <main className="flex">
-            <Sidebar proj={proj} />
+            <Sidebar proj={project} />
 
-            <CreateProject/>
+            <CreateProject onProjectCreate={handleProject}/>
 
         </main>
     );
