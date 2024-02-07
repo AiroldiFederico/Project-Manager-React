@@ -9,20 +9,29 @@ import DetailsProject from "./components/DetailsProject.jsx";
 function App() {
 
     const [project, setProject] = useState([]);
+    const [view, setView] = useState(true);
 
     function  handleProject(newProject) {
         setProject(prevProject => [...prevProject, newProject])
-        console.log(newProject);
     }
 
-    let selected = true;
+    function handleView(notSelected) {
+
+        setView(preView => {
+            if (notSelected) {
+                preView = false;
+            } else {
+                preView = true;
+            }
+        })
+    }
 
     return (
         <main className="flex">
 
-            <Sidebar proj={project} />
+            <Sidebar proj={project} setView={handleView}/>
 
-            { selected ? <DetailsProject/> : <CreateProject onProjectCreate={handleProject}/>}
+            { view ? <DetailsProject/> : <CreateProject onProjectCreate={handleProject}/>}
 
         </main>
     );
