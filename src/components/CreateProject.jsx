@@ -24,12 +24,19 @@ export default function CreateProject({ onProjectCreate }) {
 		dateRef.current.value = '';
 	}
 
+	function handleCancel() {
+		titleRef.current.value = '';
+		descriptionRef.current.value = '';
+		dateRef.current.value = '';
+	}
 
 
 	return <section className="h-full ml-80 p-12 w-[60rem] mt-14 flex flex-col gap-8">
 
 		<div className="flex justify-end">
-			<button className="text-stone-800 hover:text-stone-950 font-bold px-6 py-2">Cancel</button>
+			<button
+				onClick={handleCancel}
+				className="text-stone-800 hover:text-stone-950 font-bold px-6 py-2">Cancel</button>
 			<button
 				onClick={handleSave}
 				className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950 font-bold">Save</button>
