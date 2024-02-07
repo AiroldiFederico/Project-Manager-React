@@ -4,6 +4,7 @@ import CreateProject from "./components/CreateProject.jsx";
 
 //hooks
 import {useRef, useState,} from "react";
+import DetailsProject from "./components/DetailsProject.jsx";
 
 function App() {
 
@@ -14,13 +15,14 @@ function App() {
         console.log(newProject);
     }
 
-    console.log(project);
+    let selected = true;
 
     return (
         <main className="flex">
+
             <Sidebar proj={project} />
 
-            <CreateProject onProjectCreate={handleProject}/>
+            { selected ? <DetailsProject/> : <CreateProject onProjectCreate={handleProject}/>}
 
         </main>
     );
