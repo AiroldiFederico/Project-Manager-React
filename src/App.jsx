@@ -21,7 +21,11 @@ function App() {
         setView(viewValue);
     }
 
-    console.log(project);
+    function handleDeleteTask(index) {
+        setProject(currentProjects => currentProjects.filter((_, i) => i !== index));
+        setView(false);
+        setSelectedProjectIndex(null);
+    }
 
     return (
         <main className="flex">
@@ -34,7 +38,7 @@ function App() {
             />
 
 
-            { view ? <DetailsProject objProject={project} index={selectedProjectIndex}/> : <CreateProject onProjectCreate={handleProject}/>}
+            { view ? <DetailsProject objProject={project} index={selectedProjectIndex} deleteTask={handleDeleteTask}/> : <CreateProject onProjectCreate={handleProject}/>}
 
         </main>
     );
