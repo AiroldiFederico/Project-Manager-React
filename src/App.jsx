@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar.jsx";
 import CreateProject from "./components/CreateProject.jsx";
 
 //hooks
-import {useRef, useState,} from "react";
+import {useState,} from "react";
 import DetailsProject from "./components/DetailsProject.jsx";
 
 function App() {
