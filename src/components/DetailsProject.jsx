@@ -1,5 +1,4 @@
-
-
+import TaskManager from "./TaskManager.jsx";
 
 
 export default function DetailsProject({objProject, index, deleteTask}) {
@@ -18,6 +17,8 @@ export default function DetailsProject({objProject, index, deleteTask}) {
 		<p className="text-stone-600 whitespace-pre-wrap">{objProject[index].description}</p>
 
 		<hr className="mt-6 border-2"/>
+
+		<TaskManager  />
 
 	</section>
 }
