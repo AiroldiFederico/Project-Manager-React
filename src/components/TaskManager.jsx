@@ -15,6 +15,12 @@ export default function TaskManager() {
 		}
 	}
 
+	function handleDeleteTask(indexValue) {
+		setTask(actualTask => actualTask.filter((_, i) => i !== indexValue))
+	}
+
+	//TODO: gestire i task per ogni projec, probabilemente dovrò fare un lift-up dello useState, e ciclare ogni contenitore di task per ogni project
+
 
 	return <section className="mt-8 font-semibold">
 		<h2 className="text-2xl font-bold text-stone-700 mb-4">Task</h2>
@@ -33,7 +39,10 @@ export default function TaskManager() {
 			{task.map((value, indexValue) => (
 				<li key={indexValue} className="flex justify-between my-4">
 					<span>{value}</span>
-					<button className="text-stone-700 hover:text-red-500 me-2">Clear</button>
+					<button
+						onClick={() => handleDeleteTask(indexValue)}
+						className="text-stone-700 hover:text-red-500 me-2">Clear
+					</button>
 				</li>
 			))}
 
