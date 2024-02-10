@@ -2,7 +2,7 @@ import TaskManager from "./TaskManager.jsx";
 
 
 export default function DetailsProject({objProject, index, deleteTask}) {
-	return <section className="h-full ml-80 p-12 w-[60rem] relative border mt-14 flex flex-col">
+	return <section className="h-full ml-80 p-12 w-[60rem] relative mt-14 flex flex-col">
 
 		<button
 			onClick={() => deleteTask(index)}
