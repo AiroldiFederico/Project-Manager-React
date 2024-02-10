@@ -35,18 +35,21 @@ export default function TaskManager() {
 			</button>
 		</div>
 
-		<ul className="p-2 mt-8 rounded-md bg-stone-100">
-			{task.map((value, indexValue) => (
-				<li key={indexValue} className="flex justify-between my-4">
-					<span>{value}</span>
-					<button
-						onClick={() => handleDeleteTask(indexValue)}
-						className="text-stone-700 hover:text-red-500 me-2">Clear
-					</button>
-				</li>
-			))}
-
-		</ul>
+		{ //rendering condizionato dalla presenza o meno di elementi
+			task.length > 0 && (
+				<ul className="p-2 mt-8 rounded-md bg-stone-100">
+					{task.map((value, indexValue) => (
+						<li key={indexValue} className="flex justify-between my-4">
+							<span>{value}</span>
+							<button
+								onClick={() => handleDeleteTask(indexValue)}
+								className="text-stone-700 hover:text-red-500 me-2">Clear
+							</button>
+						</li>
+					))}
+				</ul>
+			)
+		}
 
 	</section>
 }

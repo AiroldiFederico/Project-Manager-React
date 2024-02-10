@@ -50,7 +50,7 @@ export default function CreateProject({ onProjectCreate }) {
 	return (
 
 		<>
-			<Modal ref={modal} buttonCaption="Okay">Seems that fields are empty <br/> Please Check</Modal>
+			<Modal ref={modal} buttonCaption="Okay">It seems that the fields are empty <br/> Please Check</Modal>
 
 			<section className="h-full ml-80 p-12 w-[60rem] mt-14 flex flex-col gap-8">
 
