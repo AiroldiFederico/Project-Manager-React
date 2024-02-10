@@ -7,41 +7,61 @@ import {useState,} from "react";
 import DetailsProject from "./components/DetailsProject.jsx";
 
 function App() {
-
-    const [project, setProject] = useState([]);
+    const [projects, setProjects] = useState([]); // Rinominato per chiarezza
     const [view, setView] = useState(false);
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
 
-
-    function  handleProject(newProject) {
-        setProject(prevProject => [...prevProject, newProject])
+    function handleProject(newProject) {
+        setProjects(prevProjects => [...prevProjects, { ...newProject, tasks: [] }]);
     }
 
     function handleView(viewValue) {
         setView(viewValue);
     }
 
-    function handleDeleteTask(index) {
-        setProject(currentProjects => currentProjects.filter((_, i) => i !== index));
-        setView(false);
-        setSelectedProjectIndex(null);
+    function addTaskToProject(projectIndex, newTask) {
+        setProjects(projects =>
+            projects.map((project, index) =>
+                index === projectIndex
+                    ? { ...project, tasks: [...project.tasks, newTask] }
+                    : project
+            )
+        );
+    }
+
+    function deleteTaskFromProject(projectIndex, taskIndex) {
+        setProjects(projects =>
+            projects.map((project, index) =>
+                index === projectIndex
+                    ? { ...project, tasks: project.tasks.filter((_, i) => i !== taskIndex) }
+                    : project
+            )
+        );
     }
 
     return (
         <main className="flex">
-
             <Sidebar
-                proj={project}
+                proj={projects}
                 setView={handleView}
                 setSelectedProjectIndex={setSelectedProjectIndex}
                 selectedProjectIndex={selectedProjectIndex}
             />
 
-
-            { view ? <DetailsProject objProject={project} index={selectedProjectIndex} deleteTask={handleDeleteTask}/> : <CreateProject onProjectCreate={handleProject}/>}
-
+            {view ? (
+                <DetailsProject
+                    objProject={projects}
+                    index={selectedProjectIndex}
+                    deleteTask={(projectIndex) => deleteTaskFromProject(projectIndex)}
+                    addTaskToProject={addTaskToProject}
+                    deleteTaskFromProject={deleteTaskFromProject}
+                />
+            ) : (
+                <CreateProject onProjectCreate={handleProject}/>
+            )}
         </main>
     );
 }
+
 
 export default App;

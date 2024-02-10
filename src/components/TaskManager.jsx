@@ -2,24 +2,17 @@ import {useState, useRef} from "react";
 
 
 
-export default function TaskManager() {
+export default function TaskManager({ tasks, onAddTask, onDeleteTask }) {
 
-	const [task, setTask] = useState([])
 	const inputTask = useRef();
 
-	function handleTask() {
+	function addTask() {
 		const newTask = inputTask.current.value;
-		if (newTask) { // Verifica che il nuovo task non sia vuoto
-			setTask(actualTask => [...actualTask, newTask]);
-			inputTask.current.value = ''; // Opzionale: pulisci l'input dopo l'aggiunta
+		if (newTask) {
+			onAddTask(newTask);
+			inputTask.current.value = '';
 		}
 	}
-
-	function handleDeleteTask(indexValue) {
-		setTask(actualTask => actualTask.filter((_, i) => i !== indexValue))
-	}
-
-	//TODO: gestire i task per ogni projec, probabilemente dovrò fare un lift-up dello useState, e ciclare ogni contenitore di task per ogni project
 
 
 	return <section className="mt-8 font-semibold">
@@ -30,26 +23,22 @@ export default function TaskManager() {
 			       ref={inputTask}
 			       className="w-64 px-2 py-1 rounded-sm bg-stone-200"/>
 			<button
-				onClick={handleTask}
+				onClick={addTask}
 				className="text-stone-700 hover:text-stone-950 ml-4" >Add Task
 			</button>
 		</div>
 
-		{ //rendering condizionato dalla presenza o meno di elementi
-			task.length > 0 && (
-				<ul className="p-2 mt-8 rounded-md bg-stone-100">
-					{task.map((value, indexValue) => (
-						<li key={indexValue} className="flex justify-between my-4">
-							<span>{value}</span>
-							<button
-								onClick={() => handleDeleteTask(indexValue)}
-								className="text-stone-700 hover:text-red-500 me-2">Clear
-							</button>
-						</li>
-					))}
-				</ul>
-			)
-		}
+		{tasks && tasks.length > 0 && (
+			<ul className="p-2 mt-8 rounded-md bg-stone-100">
+				{tasks.map((value, indexValue) => (
+					<li key={indexValue} className="flex justify-between my-4">
+						<span>{value}</span>
+						<button onClick={() => onDeleteTask(indexValue)} className="text-stone-700 hover:text-red-500 me-2">Clear</button>
+					</li>
+				))}
+			</ul>
+		)}
+
 
 	</section>
 }

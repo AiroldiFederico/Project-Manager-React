@@ -1,7 +1,10 @@
 import TaskManager from "./TaskManager.jsx";
 
 
-export default function DetailsProject({objProject, index, deleteTask}) {
+export default function DetailsProject({ objProject, index, deleteTask, addTaskToProject, deleteTaskFromProject }) {
+
+	const project = objProject[index];
+
 	return <section className="h-full ml-80 p-12 w-[60rem] relative mt-14 flex flex-col">
 
 		<button
@@ -18,7 +21,12 @@ export default function DetailsProject({objProject, index, deleteTask}) {
 
 		<hr className="mt-6 border-2"/>
 
-		<TaskManager  />
+		<TaskManager
+			tasks={objProject[index].tasks || []}
+			onAddTask={(newTask) => addTaskToProject(index, newTask)}
+			onDeleteTask={(taskIndex) => deleteTaskFromProject(index, taskIndex)}
+		/>
+
 
 	</section>
 }

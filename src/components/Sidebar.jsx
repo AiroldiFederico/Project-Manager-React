@@ -4,8 +4,6 @@
 
 export default function Sidebar({proj, setView, setSelectedProjectIndex, selectedProjectIndex }) {
 
-	let notSelected = false;
-
 	return <aside className="h-screen mt-14 fixed top-0 left-0 w-80 bg-stone-800 text-white rounded-tr-3xl p-6 flex gap-8 flex-col">
 
 		<h1 className="text-2xl uppercase font-sans font-bold mt-16">Your Projects</h1>
@@ -21,8 +19,8 @@ export default function Sidebar({proj, setView, setSelectedProjectIndex, selecte
 			{proj.map((row, rowIndex) => (
 				<button
 					onClick={() => {
-						setView(true); // Mostra DetailsProject
-						setSelectedProjectIndex(rowIndex); // Imposta l'indice dell'elemento selezionato
+						setView(true);
+						setSelectedProjectIndex(rowIndex);
 					}}
 					key={rowIndex}
 					className={`text-left px-2 rounded-sm py-1 ${selectedProjectIndex === rowIndex ? 'bg-stone-700 text-white hover:bg-stone-700' : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'}`}>
