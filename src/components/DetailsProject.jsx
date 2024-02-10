@@ -3,7 +3,11 @@ import TaskManager from "./TaskManager.jsx";
 
 export default function DetailsProject({ objProject, index, deleteTask, addTaskToProject, deleteTaskFromProject }) {
 
-	const project = objProject[index];
+	const formattedDate = new Date(objProject[index].date).toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'short',
+		day: 'numeric',
+	});
 
 	return <section className="h-full ml-80 p-12 w-[60rem] relative mt-14 flex flex-col">
 
@@ -15,7 +19,7 @@ export default function DetailsProject({ objProject, index, deleteTask, addTaskT
 
 		<h1 className="text-3xl font-bold text-stone-600 mb-2">{objProject[index].title}</h1>
 
-		<p className="mb-4 text-stone-400">{objProject[index].date}</p>
+		<p className="mb-4 text-stone-400">{formattedDate}</p>
 
 		<p className="text-stone-600 whitespace-pre-wrap">{objProject[index].description}</p>
 
