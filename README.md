@@ -1,4 +1,4 @@
-# TEMPLATE REACT
+# Project Management
 # Progetto di Federico Airoldi
 
 Questo repository contiene un progetto di Federico Airoldi. Lo scopo del progetto è quello di fornire un ambiente pratico per esplorare e apprendere varie tecnologie e librerie nel campo dello sviluppo web.
@@ -62,6 +62,4 @@ Elenco dei principali pacchetti installati in questo progetto:
 
 **Federico Airoldi**
 
-## Licenza
 
-Questo progetto non ha licenze
